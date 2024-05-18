@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7qxx4wpq22x4"]
+
+[ext_resource type="PackedScene" uid="uid://drem7dokqe7wy" path="res://scenes/cell.tscn" id="1_sqqax"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(102, 101)
+
+[node name="Cell" parent="." instance=ExtResource("1_sqqax")]
+position = Vector2(0, 0)
+
+[node name="Cell2" parent="." instance=ExtResource("1_sqqax")]
+position = Vector2(200, 0)
+
+[node name="Cell3" parent="." instance=ExtResource("1_sqqax")]
+position = Vector2(400, 0)
+
+[node name="Cell4" parent="." instance=ExtResource("1_sqqax")]
+position = Vector2(0, 200)
+
+[node name="Cell5" parent="." instance=ExtResource("1_sqqax")]
+position = Vector2(200, 200)
+
+[node name="Cell6" parent="." instance=ExtResource("1_sqqax")]
+position = Vector2(400, 200)
+
+[node name="Cell7" parent="." instance=ExtResource("1_sqqax")]
+position = Vector2(0, 400)
+
+[node name="Cell8" parent="." instance=ExtResource("1_sqqax")]
+position = Vector2(200, 400)
+
+[node name="Cell9" parent="." instance=ExtResource("1_sqqax")]
+position = Vector2(400, 400)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(100, -100, 100, 500)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="."]
+points = PackedVector2Array(-100, 300, 500, 300)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="."]
+points = PackedVector2Array(-100, 100, 500, 100)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D4" type="Line2D" parent="."]
+points = PackedVector2Array(300, -100, 300, 500)
+default_color = Color(0, 0, 0, 1)
