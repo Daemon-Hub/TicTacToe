@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7qxx4wpq22x4"]
+[gd_scene load_steps=3 format=3 uid="uid://b7qxx4wpq22x4"]
 
+[ext_resource type="Script" path="res://src/game.gd" id="1_ocpse"]
 [ext_resource type="PackedScene" uid="uid://drem7dokqe7wy" path="res://scenes/cell.tscn" id="1_sqqax"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(102, 101)
+script = ExtResource("1_ocpse")
+lst_cells = [NodePath("Cell"), NodePath("Cell2"), NodePath("Cell3"), NodePath("Cell4"), NodePath("Cell5"), NodePath("Cell6"), NodePath("Cell7"), NodePath("Cell8"), NodePath("Cell9")]
 
 [node name="Cell" parent="." instance=ExtResource("1_sqqax")]
 position = Vector2(0, 0)
@@ -47,3 +50,5 @@ default_color = Color(0, 0, 0, 1)
 [node name="Line2D4" type="Line2D" parent="."]
 points = PackedVector2Array(300, -100, 300, 500)
 default_color = Color(0, 0, 0, 1)
+
+[connection signal="cell_pressed" from="." to="." method="_on_cell_pressed"]

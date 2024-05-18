@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://drem7dokqe7wy"]
+[gd_scene load_steps=5 format=3 uid="uid://drem7dokqe7wy"]
 
 [ext_resource type="Script" path="res://src/cell.gd" id="1_frv6p"]
+[ext_resource type="Texture2D" uid="uid://ds6dih0wyi4de" path="res://files/cross.png" id="2_q7qqu"]
+[ext_resource type="Texture2D" uid="uid://d0om1y2f6lnv2" path="res://files/circle.png" id="3_gty64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07dfu"]
 size = Vector2(200, 200)
@@ -8,6 +10,8 @@ size = Vector2(200, 200)
 [node name="Area2D" type="Area2D"]
 position = Vector2(0, 1)
 script = ExtResource("1_frv6p")
+cross_path = NodePath("Cross")
+circle_path = NodePath("Circle")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -15,3 +19,13 @@ shape = SubResource("RectangleShape2D_07dfu")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(100, 100, 100, -100, -100, -100, -100, 100)
+
+[node name="Cross" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(4, 4.059)
+texture = ExtResource("2_q7qqu")
+
+[node name="Circle" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2.067, 2)
+texture = ExtResource("3_gty64")
