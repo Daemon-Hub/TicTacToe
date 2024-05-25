@@ -7,14 +7,12 @@ extends Area2D
 @onready var circle: Sprite2D = get_node(circle_path)
 
 
-
-func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if !is_instance_valid(cross) or !is_instance_valid(circle): return
 	if cross.visible or circle.visible: return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			get_parent().emit_signal("cell_pressed", self)
-		
+			Signals.emit_signal("cell_pressed", self)
 	
 func put_cross():
 	cross.visible = true

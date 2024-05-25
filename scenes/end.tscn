@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1p7ekiwubqlh"]
+
+[ext_resource type="Script" path="res://src/end.gd" id="1_qa0nr"]
+
+[node name="End" type="Node2D"]
+modulate = Color(0.490196, 1, 0.219608, 1)
+script = ExtResource("1_qa0nr")
+
+[node name="Winner" type="Label" parent="."]
+offset_left = 70.0
+offset_top = 105.0
+offset_right = 509.0
+offset_bottom = 231.0
+rotation = 0.261799
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToMenu" type="Button" parent="."]
+offset_left = 172.0
+offset_top = 395.0
+offset_right = 409.0
+offset_bottom = 461.0
+rotation = -0.261799
+theme_override_font_sizes/font_size = 40
+text = "Menu"
+flat = true
+
+[connection signal="pressed" from="ToMenu" to="." method="_on_to_menu_pressed"]

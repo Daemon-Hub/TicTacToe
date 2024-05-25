@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07dfu"]
 size = Vector2(200, 200)
 
-[node name="Area2D" type="Area2D"]
+[node name="Cell" type="Area2D"]
 position = Vector2(0, 1)
 script = ExtResource("1_frv6p")
 cross_path = NodePath("Cross")

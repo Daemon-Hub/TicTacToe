@@ -1,54 +1,76 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7qxx4wpq22x4"]
+[gd_scene load_steps=4 format=3 uid="uid://b7qxx4wpq22x4"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_ocpse"]
 [ext_resource type="PackedScene" uid="uid://drem7dokqe7wy" path="res://scenes/cell.tscn" id="1_sqqax"]
+[ext_resource type="PackedScene" uid="uid://c1p7ekiwubqlh" path="res://scenes/end.tscn" id="3_s70wu"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(102, 101)
 script = ExtResource("1_ocpse")
-lst_cells = [NodePath("Cell"), NodePath("Cell2"), NodePath("Cell3"), NodePath("Cell4"), NodePath("Cell5"), NodePath("Cell6"), NodePath("Cell7"), NodePath("Cell8"), NodePath("Cell9")]
 
-[node name="Cell" parent="." instance=ExtResource("1_sqqax")]
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Cells" type="Node2D" parent="Map"]
+
+[node name="Cell1" parent="Map/Cells" instance=ExtResource("1_sqqax")]
 position = Vector2(0, 0)
 
-[node name="Cell2" parent="." instance=ExtResource("1_sqqax")]
+[node name="Cell2" parent="Map/Cells" instance=ExtResource("1_sqqax")]
 position = Vector2(200, 0)
 
-[node name="Cell3" parent="." instance=ExtResource("1_sqqax")]
+[node name="Cell3" parent="Map/Cells" instance=ExtResource("1_sqqax")]
 position = Vector2(400, 0)
 
-[node name="Cell4" parent="." instance=ExtResource("1_sqqax")]
+[node name="Cell4" parent="Map/Cells" instance=ExtResource("1_sqqax")]
 position = Vector2(0, 200)
 
-[node name="Cell5" parent="." instance=ExtResource("1_sqqax")]
+[node name="Cell5" parent="Map/Cells" instance=ExtResource("1_sqqax")]
 position = Vector2(200, 200)
 
-[node name="Cell6" parent="." instance=ExtResource("1_sqqax")]
+[node name="Cell6" parent="Map/Cells" instance=ExtResource("1_sqqax")]
 position = Vector2(400, 200)
 
-[node name="Cell7" parent="." instance=ExtResource("1_sqqax")]
+[node name="Cell7" parent="Map/Cells" instance=ExtResource("1_sqqax")]
 position = Vector2(0, 400)
 
-[node name="Cell8" parent="." instance=ExtResource("1_sqqax")]
+[node name="Cell8" parent="Map/Cells" instance=ExtResource("1_sqqax")]
 position = Vector2(200, 400)
 
-[node name="Cell9" parent="." instance=ExtResource("1_sqqax")]
+[node name="Cell9" parent="Map/Cells" instance=ExtResource("1_sqqax")]
 position = Vector2(400, 400)
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Lines" type="Node2D" parent="Map"]
+
+[node name="Line2D1" type="Line2D" parent="Map/Lines"]
 points = PackedVector2Array(100, -100, 100, 500)
 default_color = Color(0, 0, 0, 1)
 
-[node name="Line2D2" type="Line2D" parent="."]
+[node name="Line2D2" type="Line2D" parent="Map/Lines"]
 points = PackedVector2Array(-100, 300, 500, 300)
 default_color = Color(0, 0, 0, 1)
 
-[node name="Line2D3" type="Line2D" parent="."]
+[node name="Line2D3" type="Line2D" parent="Map/Lines"]
 points = PackedVector2Array(-100, 100, 500, 100)
 default_color = Color(0, 0, 0, 1)
 
-[node name="Line2D4" type="Line2D" parent="."]
+[node name="Line2D4" type="Line2D" parent="Map/Lines"]
 points = PackedVector2Array(300, -100, 300, 500)
 default_color = Color(0, 0, 0, 1)
 
-[connection signal="cell_pressed" from="." to="." method="_on_cell_pressed"]
+[node name="End" parent="." instance=ExtResource("3_s70wu")]
+visible = false
+
+[node name="Winner" parent="End" index="0"]
+offset_left = -11.0
+offset_top = -9.0
+offset_right = 428.0
+offset_bottom = 117.0
+
+[node name="ToMenu" parent="End" index="1"]
+offset_left = 56.0
+offset_top = 327.0
+offset_right = 293.0
+offset_bottom = 393.0
+text = "Menu "
+
+[editable path="End"]

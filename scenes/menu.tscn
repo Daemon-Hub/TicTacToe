@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://buyy4u3p0pyf3"]
+
+[ext_resource type="Script" path="res://src/menu.gd" id="1_fcl61"]
+[ext_resource type="Texture2D" uid="uid://ds6dih0wyi4de" path="res://files/cross.png" id="2_4jsga"]
+[ext_resource type="Texture2D" uid="uid://d0om1y2f6lnv2" path="res://files/circle.png" id="3_ari8q"]
+
+[node name="Menu" type="Node2D"]
+modulate = Color(0.403922, 1, 1, 1)
+script = ExtResource("1_fcl61")
+
+[node name="Start" type="Button" parent="."]
+offset_left = 151.0
+offset_top = 246.0
+offset_right = 473.0
+offset_bottom = 309.0
+rotation = -0.261799
+theme_override_font_sizes/font_size = 40
+text = "Start"
+flat = true
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 130.0
+offset_top = 310.0
+offset_right = 468.0
+offset_bottom = 378.0
+rotation = 0.261799
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+flat = true
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 28.0
+button_pressed = true
+keep_pressed_outside = true
+text = "RandomPerson"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+visible = false
+offset_left = 17.0
+offset_top = 38.0
+offset_right = 120.0
+offset_bottom = 69.0
+disabled = true
+expand_icon = true
+item_count = 2
+popup/item_0/text = "Cross"
+popup/item_0/icon = ExtResource("2_4jsga")
+popup/item_0/id = 0
+popup/item_1/text = "Circle"
+popup/item_1/icon = ExtResource("3_ari8q")
+popup/item_1/id = 1
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
