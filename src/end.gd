@@ -4,7 +4,7 @@ extends Node2D
 @onready var map := $'../Map'
 
 func _ready() -> void:
-	Signals.connect("winner_text", Callable(self, "_on_winner_text"))
+	Global.connect("winner_text", Callable(self, "_on_winner_text"))
 
 func _on_to_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")

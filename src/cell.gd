@@ -12,7 +12,7 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 	if cross.visible or circle.visible: return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			Signals.emit_signal("cell_pressed", self)
+			Global.emit_signal("cell_pressed", self)
 	
 func put_cross():
 	cross.visible = true

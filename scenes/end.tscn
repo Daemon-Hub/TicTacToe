@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1p7ekiwubqlh"]
+[gd_scene load_steps=3 format=3 uid="uid://c1p7ekiwubqlh"]
 
 [ext_resource type="Script" path="res://src/end.gd" id="1_qa0nr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h82xg"]
 
 [node name="End" type="Node2D"]
 modulate = Color(0.490196, 1, 0.219608, 1)
@@ -23,6 +25,7 @@ offset_right = 409.0
 offset_bottom = 461.0
 rotation = -0.261799
 theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h82xg")
 text = "Menu"
 flat = true
 

@@ -1,8 +1,107 @@
-[gd_scene load_steps=4 format=3 uid="uid://buyy4u3p0pyf3"]
+[gd_scene load_steps=12 format=3 uid="uid://buyy4u3p0pyf3"]
 
 [ext_resource type="Script" path="res://src/menu.gd" id="1_fcl61"]
-[ext_resource type="Texture2D" uid="uid://ds6dih0wyi4de" path="res://files/cross.png" id="2_4jsga"]
-[ext_resource type="Texture2D" uid="uid://d0om1y2f6lnv2" path="res://files/circle.png" id="3_ari8q"]
+[ext_resource type="PackedScene" uid="uid://mubc783whtm2" path="res://scenes/options.tscn" id="2_a21l2"]
+[ext_resource type="Texture2D" uid="uid://c73ccwl36fhv2" path="res://files/options.png" id="3_v4cwp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwq7u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovhx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idhk3"]
+size = Vector2(43.375, 41.1118)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4d3i"]
+
+[sub_resource type="Animation" id="Animation_h3lb5"]
+resource_name = "options_open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, 115), Vector2(100, 115)]
+}
+
+[sub_resource type="Animation" id="Animation_ypyut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-100, 115)]
+}
+
+[sub_resource type="Animation" id="Animation_fjju0"]
+resource_name = "options_close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, 115), Vector2(-100, 115)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cl0re"]
+_data = {
+"RESET": SubResource("Animation_ypyut"),
+"options_close": SubResource("Animation_fjju0"),
+"options_open": SubResource("Animation_h3lb5")
+}
 
 [node name="Menu" type="Node2D"]
 modulate = Color(0.403922, 1, 1, 1)
@@ -15,6 +114,7 @@ offset_right = 473.0
 offset_bottom = 309.0
 rotation = -0.261799
 theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bwq7u")
 text = "Start"
 flat = true
 
@@ -25,35 +125,39 @@ offset_right = 468.0
 offset_bottom = 378.0
 rotation = 0.261799
 theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ovhx7")
 text = "Exit"
 flat = true
 
-[node name="CheckButton" type="CheckButton" parent="."]
-offset_left = 6.0
-offset_top = 4.0
-offset_right = 50.0
-offset_bottom = 28.0
-button_pressed = true
-keep_pressed_outside = true
-text = "RandomPerson"
+[node name="Options" parent="." instance=ExtResource("2_a21l2")]
+modulate = Color(0.403922, 1, 1, 0.760784)
+z_index = 100
+y_sort_enabled = true
+position = Vector2(-100, 115)
 
-[node name="OptionButton" type="OptionButton" parent="."]
-visible = false
-offset_left = 17.0
-offset_top = 38.0
-offset_right = 120.0
-offset_bottom = 69.0
-disabled = true
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(30, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_idhk3")
+
+[node name="OptionsBtn" type="Button" parent="Area2D"]
+offset_left = -21.0
+offset_top = -20.0
+offset_right = 23.0
+offset_bottom = 21.0
+rotation = 0.00226802
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n4d3i")
+icon = ExtResource("3_v4cwp")
+flat = true
+icon_alignment = 1
 expand_icon = true
-item_count = 2
-popup/item_0/text = "Cross"
-popup/item_0/icon = ExtResource("2_4jsga")
-popup/item_0/id = 0
-popup/item_1/text = "Circle"
-popup/item_1/icon = ExtResource("3_ari8q")
-popup/item_1/id = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cl0re")
+}
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
-[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Area2D/OptionsBtn" to="." method="_on_options_btn_pressed"]

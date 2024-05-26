@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://mubc783whtm2"]
+
+[ext_resource type="Texture2D" uid="uid://ds6dih0wyi4de" path="res://files/cross.png" id="1_glh36"]
+[ext_resource type="Script" path="res://src/options.gd" id="1_mub3m"]
+[ext_resource type="Texture2D" uid="uid://d0om1y2f6lnv2" path="res://files/circle.png" id="2_eqc3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iqpd"]
+size = Vector2(200, 120)
+
+[node name="Options" type="Area2D"]
+modulate = Color(0.403922, 1, 1, 1)
+script = ExtResource("1_mub3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(0.164706, 0.203922, 0.192157, 1)
+z_index = 100
+z_as_relative = false
+shape = SubResource("RectangleShape2D_6iqpd")
+disabled = true
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = -85.0
+offset_top = -56.0
+offset_right = 86.0
+offset_bottom = -25.0
+button_pressed = true
+keep_pressed_outside = true
+text = "Random Person"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+offset_left = -79.0
+offset_top = -19.0
+offset_right = 76.0
+offset_bottom = 12.0
+disabled = true
+expand_icon = true
+item_count = 2
+selected = 0
+popup/item_0/text = "Circle"
+popup/item_0/icon = ExtResource("2_eqc3h")
+popup/item_0/id = 0
+popup/item_1/text = "Cross"
+popup/item_1/icon = ExtResource("1_glh36")
+popup/item_1/id = 1
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]

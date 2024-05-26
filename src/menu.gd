@@ -1,28 +1,30 @@
 extends Node2D
 
-@export var game_state := 'res://files/game_state.txt'
-@onready var person_option := $OptionButton
-var state: int
-var check_btn_state: bool
+@onready var animPl := $AnimationPlayer
+@onready var options := $Options
+
+var options_is_opened: bool = false
 
 func _on_start_pressed() -> void:
-	if check_btn_state:
-		game_state = str(2)
+	if options.check_btn_state:
+		Global.game_state = 2
 	else:
-		game_state = str(state)
+		Global.game_state = options.selected_person
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
-func _on_check_button_toggled(button_pressed: bool) -> void:
-	check_btn_state = button_pressed
-	if button_pressed:
-		person_option.disabled = true
-		person_option.visible = false
+func _on_options_btn_pressed() -> void:
+	if !options_is_opened:
+		animPl.play('options_open')
+		options_is_opened = !options_is_opened
 	else:
-		person_option.disabled = false
-		person_option.visible = true
-	
-func _on_option_button_item_selected(index: int) -> void:
-	state = index
+		animPl.play('options_close')
+		options_is_opened = !options_is_opened
+
+
+
+
+
+
